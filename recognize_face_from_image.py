@@ -23,7 +23,7 @@ load_data = torch.load('data.pt')
 embedding_list = load_data[0]
 name_list = load_data[1]
 
-img = Image.open("./photos/.jpg")
+img = Image.open("./photos/dadario.jpg.jpg")
 img_cropped_list, prob_list = mtcnn(img, return_prob=True)
 
 if img_cropped_list is not None:
