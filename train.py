@@ -17,7 +17,7 @@ resnet = InceptionResnetV1(pretrained='vggface2').eval()
 
 
 # Read data from folder
-dataset = datasets.ImageFolder('dataset')  # photos folder path
+dataset = datasets.ImageFolder('dataset1')  # photos folder path
 # accessing names of peoples from folder names
 idx_to_class = {i: c for c, i in dataset.class_to_idx.items()}
 

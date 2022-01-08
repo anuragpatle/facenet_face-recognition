@@ -23,13 +23,14 @@ load_data = torch.load('data.pt')
 embedding_list = load_data[0]
 name_list = load_data[1]
 
-img = Image.open("./photos/dadario.jpg.jpg")
+img = Image.open("./photos/virat.jpg")
 img_cropped_list, prob_list = mtcnn(img, return_prob=True)
 
 if img_cropped_list is not None:
     boxes, _ = mtcnn.detect(img)
 
     for i, prob in enumerate(prob_list):
+        print("prob: ", prob)
         if prob > 0.90:
             emb = resnet(img_cropped_list[i].unsqueeze(0)).detach()
 
