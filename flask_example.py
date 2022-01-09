@@ -35,6 +35,14 @@ def upload_image():
         flash('No file part')
         return redirect(request.url)
     file = request.files['file']
+    img_capture_time = request.form.get('current_time')
+    img_capture_date = request.form.get('current_date')
+    img_capture_datetime = request.form.get('current_datetime')
+    print("img_capture_time", img_capture_time)
+    print("img_capture_date", img_capture_date)
+    print("img_capture_datetime", img_capture_datetime)
+    img_capturing_device = request.form.get('device_id')
+    print("img_capturing_device", img_capturing_device)
     if file.filename == '':
         flash('No image selected for uploading')
         return redirect(request.url)
@@ -45,7 +53,7 @@ def upload_image():
         flash('Image successfully uploaded and displayed below')
         img_path = UPLOAD_FOLDER  + '/' + filename
         print('upload_image filename: ' + filename)
-        obj = DeepFace.analyze(img_path =img_path, actions=['age', 'gender', 'race', 'emotion'])
+        obj = DeepFace.analyze(img_path =img_path, actions=['age', 'gender', 'race', 'emotion'], enforce_detection=False)
         print("obj: ", obj)
         # df = DeepFace.find(img_path = img_path, db_path = "./dataset1", enforce_detection=False)
         df = DeepFace.find(img_path = img_path, db_path = "./dataset1", enforce_detection=False)
