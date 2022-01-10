@@ -104,4 +104,5 @@ def crop_images_to_faces(save_path):
 
 
 if __name__ == '__main__':
-    capture_headshots()
+    # capture_headshots()
+    crop_images_to_faces('dataset/anurag_patle-202000932')

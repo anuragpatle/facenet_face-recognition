@@ -5,6 +5,7 @@ from flask_session import Session
 from deepface import DeepFace
 from pathlib import Path
 from deepface.basemodels import VGGFace
+from pathlib import Path
 
 
 UPLOAD_FOLDER_FOR_RECOG = 'static/uploaded_files_for_recog'
@@ -63,7 +64,7 @@ def upload_image():
         # print(df.head())
         if (df.shape[0] > 0):
             print("df.iloc[0]['VGG-Face_cosine'] -> ", df.iloc[0]['VGG-Face_cosine'])
-            if (df.iloc[0]['VGG-Face_cosine'] < 0.15):
+            if (df.iloc[0]['VGG-Face_cosine'] < 0.18):
                 obj = DeepFace.analyze(img_path =img_path, actions=['age', 'gender', 'race', 'emotion'], enforce_detection=False)
                 print("obj: ", obj['dominant_emotion'])
                 print("identity: " , df.iloc[0].identity.split("\\")[1].split("/")[0])
@@ -117,6 +118,7 @@ def upload_image_for_training():
 def display_image(filename):
     #print('display_image filename: ' + filename)
     return redirect(url_for('static', filename='uploaded_files_for_recog/' + filename), code=301)
+
 
 
 if __name__ == '__main__':
