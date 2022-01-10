@@ -131,3 +131,4 @@ dataset1/representations_vgg_face.pkl
 static/uploaded_files
 *.jpg
 *.pkl
+dataset0/*
