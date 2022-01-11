@@ -6,14 +6,15 @@ def delete_files_by_path():
     for f in Path('./static/uploaded_files_for_recog').glob('*.jpg'):
         try:
             f.unlink()
+            print("Cleaned the directory -> ./static/uploaded_files_for_recog")
         except OSError as e:
             print("Error: %s : %s" % (f, e.strerror))
 
 
-def func():
-    print("Geeksforgeeks")
+def cleanup_running_tick():
+    print("Cleanup is running ..")
   
-schedule.every(1).minutes.do(func)
+schedule.every(2).seconds.do(cleanup_running_tick)
 
 schedule.every(5).minutes.do(delete_files_by_path)
 
