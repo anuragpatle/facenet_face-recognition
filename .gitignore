@@ -130,5 +130,6 @@ dmypy.json
 dataset1/representations_vgg_face.pkl
 static/uploaded_files
 *.jpg
+*.png
 *.pkl
 dataset0/*
